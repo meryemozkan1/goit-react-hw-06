@@ -1,16 +1,34 @@
-# React + Vite
+# GoIT React Homework #6 - Phonebook with Redux Toolkit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is the sixth homework assignment within the GoIT React Developer program. It refactors the Phonebook application to use global state management with **Redux Toolkit** (`createSlice`, `configureStore`) and state persistence with **Redux Persist** instead of local component states.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+- [View Live Application on Vercel](https://goit-react-hw-06-tau-self.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Key Architecture & Features
+1. **Redux Toolkit Slices (`src/redux/`):**
+   - `contactsSlice.js`: Manages contact entries with `addContact` and `deleteContact` reducers, exporting the `selectContacts` selector.
+   - `filtersSlice.js`: Manages the name filter string with `changeFilter` reducer, exporting the `selectNameFilter` selector.
+2. **State Persistence (`redux-persist`):** Configured `store.js` to persist the `contacts` array into `localStorage` across page reloads.
+3. **Decoupled Components:** Component tree refactored using `useSelector` and `useDispatch` hooks—eliminating unnecessary prop drilling.
+4. **Form Handling & Validation:** Formik with Yup validation schema.
 
-## React Compiler
+## 📂 Project Structure
+- `src/redux/store.js` — Redux store configuration & Redux Persist integration
+- `src/redux/contactsSlice.js` — Contacts slice actions and selectors
+- `src/redux/filtersSlice.js` — Filters slice actions and selectors
+- `src/components/ContactForm/` — Form component dispatching `addContact`
+- `src/components/SearchBox/` — Search box component dispatching `changeFilter`
+- `src/components/ContactList/` — Contact list rendering filtered results via `useSelector`
+- `src/components/Contact/` — Individual contact card dispatching `deleteContact`
+- `src/App.jsx` — Root component layout
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technologies & Tools Used
+- **React (v18+):** Functional components & hooks.
+- **State Management:** Redux Toolkit & React Redux.
+- **State Persistence:** Redux Persist.
+- **Form Management & Validation:** Formik & Yup.
+- **ID Generator:** nanoid.
+- **Bundler:** Vite.
+- **Styling:** CSS Modules.
+- **Deployment:** Vercel.
